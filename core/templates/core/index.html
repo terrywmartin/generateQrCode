@@ -1,0 +1,27 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+
+<div>
+    <h2>QR Code Generator</h2>
+
+    <p>Enter URL below to generate a QR Code.</p>
+   <form hx-post="{% url 'qr_code:generate_qrcode' %}"  hx-target="#qr_code" hx-trigger="submit"  >
+        {% csrf_token %}
+        <div class="form-outline mx-auto  col col-lg-4 col-md-8 col-sm-12">
+            <input type="url" id="url" name="url" class="form-control" placeholder="Enter URL..." autofocus/>
+            
+        </div>
+        <br>
+        <div class="d-grid mx-auto col col-lg-4 col-sm-12 col-md-8">
+        
+        <button type="submit" class="btn btn-primary btn-block mb-4">Generate</button>
+        </div>
+         <div id="qr_code" class="mt-10 mx-auto col col-lg-4 col-sm-12 col-md-8"  hx-swap="outerHTML swap:1s">
+      
+    </div>
+    </form>
+
+   
+</div>
+{% endblock %}

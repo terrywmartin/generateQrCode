@@ -1,0 +1,3 @@
+ {{ qrcode|safe }}
+
+<a class="btn btn-primary btn-block mb-4" href="{% url 'qr_code:download_qrcode' %}?url={{url}}" download >Download</a>
