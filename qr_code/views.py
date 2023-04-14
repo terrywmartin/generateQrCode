@@ -1,12 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 
-from django.http import FileResponse, HttpResponse
-
-import qrcode
-import qrcode.image.svg
-
-from io import BytesIO
+from django.http import HttpResponse
 
 from .utils import generate_qr_code
 

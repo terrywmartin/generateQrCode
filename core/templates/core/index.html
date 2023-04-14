@@ -11,6 +11,11 @@
                 if (type == 'url'){ this.url = true; }
                 else if (type == 'wifi') { this.wifi = true; }
                 else if (type == 'vcard') { this.vcard = true; }
+            },
+            clear(){
+                document.getElementById('url_form').reset();
+                document.getElementById('vcard_form').reset();
+                document.getElementById('wifi_form').reset();
             } }">
     <h2>QR Code Generator</h2>
     <hr>
@@ -36,12 +41,15 @@
                     </label>
                     
                 </div>
+                <div class="form-outline form-check-inline  ">
+                    <button type="button" class="btn btn-danger" @click="clear()">Clear Data</button>
+                </div>
     </div>
     
     <div x-cloak x-show="url">
         <br>
         <p>Enter URL below to generate a QR Code.</p>
-        <form hx-post="{% url 'qr_code:generate_qrcode' %}"  hx-target="#qr_code" hx-trigger="submit"  >
+        <form id='url_form' hx-post="{% url 'qr_code:generate_qrcode' %}"  hx-target="#qr_code" hx-trigger="submit"  >
             {% csrf_token %}
             <div class="form-outline mx-auto  col col-lg-4 col-md-8 col-sm-12">
                 <input type="url" id="url" name="url" class="form-control" placeholder="Enter URL..." autofocus/>
@@ -60,7 +68,7 @@
     <div x-cloak x-show="vcard">
         <br>
         <p>Enter contact information to generate a vCard QR code.</p>
-        <form hx-post="{% url 'qr_code:generate_qrcode_vcard' %}"  hx-target="#qr_code_vcard" hx-trigger="submit"  >
+        <form id='vcard_form' hx-post="{% url 'qr_code:generate_qrcode_vcard' %}"  hx-target="#qr_code_vcard" hx-trigger="submit"  >
             {% csrf_token %}
             <div class="form-outline mx-auto  col col-lg-4 col-md-8 col-sm-12">
                 <input type="text" id="first_name" name="first_name" class="form-control" placeholder="First Name" autofocus/>
@@ -90,7 +98,7 @@
     <div x-cloak x-show="wifi">
          <br>
         <p>Enter Wifi information.</p>
-        <form hx-post="{% url 'qr_code:generate_qrcode_wifi' %}"  hx-target="#qr_code_wifi" hx-trigger="submit"  >
+        <form  id='wifi_form' hx-post="{% url 'qr_code:generate_qrcode_wifi' %}"  hx-target="#qr_code_wifi" hx-trigger="submit"  >
             {% csrf_token %}
             <div class="form-outline mx-auto  col col-lg-4 col-md-8 col-sm-12">
                 <input type="text" id="ssid" name="ssid" class="form-control" placeholder="SSID" autofocus/>
