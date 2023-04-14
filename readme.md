@@ -2,6 +2,8 @@
 
 Generate a QR Code for a URL, a vCard, or WiFi connection.  Select the type of QR code you want to generate, enter the information, then hit 'Generate'.   A QR Code will displayed along with a download button.
 
+This project uses Django, HTMx, and Alpine.js.  HTMx gives the app a SPA feel while Alpine.js hides the forms until the corresponding button is clicked.
+
 TODO:
 
  - Add better error handling
