@@ -38,7 +38,7 @@
                 </div>
     </div>
     
-    <div x-show="url">
+    <div x-cloak x-show="url">
         <br>
         <p>Enter URL below to generate a QR Code.</p>
         <form hx-post="{% url 'qr_code:generate_qrcode' %}"  hx-target="#qr_code" hx-trigger="submit"  >
@@ -57,7 +57,7 @@
             </div>
         </form>
     </div>
-    <div x-show="vcard">
+    <div x-cloak x-show="vcard">
         <br>
         <p>Enter contact information to generate a vCard QR code.</p>
         <form hx-post="{% url 'qr_code:generate_qrcode_vcard' %}"  hx-target="#qr_code_vcard" hx-trigger="submit"  >
@@ -87,7 +87,7 @@
             </div>
         </form>
     </div>
-    <div x-show="wifi">
+    <div x-cloak x-show="wifi">
          <br>
         <p>Enter Wifi information.</p>
         <form hx-post="{% url 'qr_code:generate_qrcode_wifi' %}"  hx-target="#qr_code_wifi" hx-trigger="submit"  >
